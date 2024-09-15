@@ -1,0 +1,14 @@
+#Cada vez que se edita el codigo myname ejecutar esto para compilar
+nasm -f bin myname.asm -o myname.bin
+
+#Cada vez que se edita el codigo bootloader ejecutar esto para compilar
+nasm -f bin bootloader.asm -o bootloader.bin
+
+#Crear la imagen del bootloader (Cada vez que se modifique algo)
+dd if=bootloader.bin of=bootloader.img bs=512 count=1 conv=notrunc
+
+#Crear la imagen del juego *Cada vez que se modifique algo)
+dd if=myname.bin of=bootloader.img bs=512 seek=1 conv=notrunc
+
+#Ejecutar el juego
+qemu-system-x86_64 -drive format=raw,file=bootloader.img,if=floppy,index=0 -boot a

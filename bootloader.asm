@@ -28,7 +28,7 @@ start:
 
     ; Intentar leer la aplicación desde el segundo sector
     mov ah, 0x02        ; Función BIOS: Leer sectores
-    mov al, 1           ; Número de sectores a leer (1 sector)
+    mov al, 2           ; Número de sectores a leer (2 sector), porque el juego es de mas de 512 bytes
     mov ch, 0           ; Cilindro 0
     mov cl, 2           ; Sector 2
     mov dh, 0           ; Cabeza 0

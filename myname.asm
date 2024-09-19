@@ -43,7 +43,7 @@ handle_input:
     cmp ah, 0x48             ; Flecha arriba
     je handle_input          ; Placeholder para futura implementación de flecha arriba
     cmp ah, 0x50             ; Flecha abajo
-    je handle_input          ; Placeholder para futura implementación de flecha abajo
+    je rotate_down           ; Placeholder para futura implementación de flecha abajo
     jmp handle_input
 
 ; Reiniciar el juego
@@ -171,6 +171,65 @@ rotate_left_karina:
     int 0x10
     inc dh
     mov ah, 0x02
+    int 0x10
+    mov al, 'a'
+    int 0x10
+    ret
+
+; Rotación a la izquierda (90 grados sobre el eje vertical)
+rotate_down:
+    call clear_screen
+    call rotate_down_sebastian
+    call rotate_down_karina
+    jmp handle_input
+
+; Subrutina para rotar 180 grados hacia abajo "Sebastian"
+rotate_down_sebastian:
+    mov ah, 0x02        ; Mover el cursor a la posición de "Sebastian"
+    mov bh, 0           ; Página 0
+    mov dh, [row_sebastian]
+    mov dl, [col_sebastian]
+    int 0x10
+
+    mov ah, 0x0E        ; Imprimir el nombre "Sebastian"
+    mov al, 'S'         ; Imprimir la letra 'S'
+    int 0x10
+    mov al, 'e'
+    int 0x10
+    mov al, 'b'
+    int 0x10
+    mov al, 'a'
+    int 0x10
+    mov al, 's'
+    int 0x10
+    mov al, 't'
+    int 0x10
+    mov al, 'i'
+    int 0x10
+    mov al, 'a'
+    int 0x10
+    mov al, 'n'
+    int 0x10
+    ret
+
+; Subrutina para rotar 180 grados hacia abajo "Karina"
+rotate_down_karina:
+    mov ah, 0x02        ; Mover el cursor a la posición de "Karina"
+    mov bh, 0           ; Página 0
+    mov dh, [row_karina]
+    mov dl, [col_karina]
+    int 0x10
+
+    mov ah, 0x0E        ; Imprimir el nombre "Karina"
+    mov al, 'K'         ; Imprimir la letra 'K'
+    int 0x10
+    mov al, 'a'
+    int 0x10
+    mov al, 'r'
+    int 0x10
+    mov al, 'i'
+    int 0x10
+    mov al, 'n'
     int 0x10
     mov al, 'a'
     int 0x10

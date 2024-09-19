@@ -192,23 +192,23 @@ rotate_down_sebastian:
     int 0x10
 
     mov ah, 0x0E        ; Imprimir el nombre "Sebastian"
-    mov al, 'S'         ; Imprimir la letra 'S'
-    int 0x10
-    mov al, 'e'
-    int 0x10
-    mov al, 'b'
+    mov al, 'n'         ; Imprimir la letra 'S'
     int 0x10
     mov al, 'a'
-    int 0x10
-    mov al, 's'
-    int 0x10
-    mov al, 't'
     int 0x10
     mov al, 'i'
     int 0x10
+    mov al, 't'
+    int 0x10
+    mov al, 's'
+    int 0x10
     mov al, 'a'
     int 0x10
-    mov al, 'n'
+    mov al, 'b'
+    int 0x10
+    mov al, 'e'
+    int 0x10
+    mov al, 'S'
     int 0x10
     ret
 
@@ -221,17 +221,17 @@ rotate_down_karina:
     int 0x10
 
     mov ah, 0x0E        ; Imprimir el nombre "Karina"
-    mov al, 'K'         ; Imprimir la letra 'K'
-    int 0x10
-    mov al, 'a'
-    int 0x10
-    mov al, 'r'
-    int 0x10
-    mov al, 'i'
+    mov al, 'a'         ; Imprimir la letra 'K'
     int 0x10
     mov al, 'n'
     int 0x10
+    mov al, 'i'
+    int 0x10
+    mov al, 'r'
+    int 0x10
     mov al, 'a'
+    int 0x10
+    mov al, 'k'
     int 0x10
     ret
 

@@ -24,3 +24,9 @@ run: $(FLOPPY_IMG)
 
 clean:
 	rm -f $(BOOTLOADER) $(MYNAME) $(FLOPPY_IMG)
+
+compile:
+	nasm -f bin bootloader.asm -o bootloader.bin
+	dd if=bootloader.bin of=bootloader.img bs=512 count=1 conv=notrunc
+	nasm -f bin myname.asm -o myname.bin
+	dd if=myname.bin of=bootloader.img bs=512 seek=1 conv=notrunc
